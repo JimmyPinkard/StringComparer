@@ -1,0 +1,1 @@
+I made this to make sure that two strings are the same, and if not identical, then checking to see if they're the same after removing white space. May add more if I need more.
