@@ -13,5 +13,9 @@ run:
 	make
 	./$(PROG)
 
+install:
+	make
+	sudo cp $(PROG) /usr/local/bin/$(PROG)
+
 clean:
 	rm *.o $(PROG) err.txt
