@@ -1,21 +1,19 @@
-CC = g++ -std=c++17 -g3
+CC = g++ -std=c++14
 PROG = StringComparer
-SRC = main.cpp
+SRC = src/main.cpp
+HEAD = src/headers/main.h
 
-$(PROG) : *.o
-	$(CC) -o $(PROG) *.o 2> err.txt
+$(PROG) : *.o $(HEAD)
+	$(CC) -o $(PROG) *.o
 	rm *.o
 
-*.o : $(SRC)
-	$(CC) -c $(SRC) 2> err.txt
-
-run:
-	make
-	./$(PROG)
+*.o : $(SRC) $(HEAD)
+	$(CC) -c $(SRC)
 
 install:
 	make
 	sudo cp $(PROG) /usr/local/bin/$(PROG)
+	make clean
 
 clean:
-	rm *.o $(PROG) err.txt
+	rm *.o $(PROG)

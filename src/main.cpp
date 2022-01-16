@@ -3,22 +3,21 @@
 
 #include "headers/main.h"
 
-
-
 int main(const int argc, const char **argv)
 {
     if(argc < 2)
     {
         std::cerr << "Use format: " << argv[0] << " <string 1> <string 2>\n";
+        help();
         return -1;
     }
-    std::string first, second;
     if((std::string)argv[1] == "-h" || (std::string)argv[1] == "--help")
     {
-        std::cout << "-h and --help prints help menu\n" << "-F --file means you want to use files for input\n" << std::endl;
+        help();
         return 0;
     }
-    else if((std::string)argv[1] == "-F" || (std::string)argv[1] == "--file")
+    std::string first, second;
+    if((std::string)argv[1] == "-F" || (std::string)argv[1] == "--file")
     {
         if(argc != 4)
         {
@@ -88,4 +87,9 @@ void results(std::string &first, std::string &second)
     {
         std::cout << "Strings aren't the same\n";
     }
+}
+
+void help()
+{
+    std::cout << "Options\n-h and --help prints help menu\n" << "-F --file means you want to use files for input\n" << std::endl;
 }
